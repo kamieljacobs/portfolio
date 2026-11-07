@@ -177,3 +177,33 @@ footer {
   color: var(--hema-zacht);
   border-top: 1px solid var(--lijn);
 }
+
+/* Paradepaardje: een uitgewerkte case met schermbeeld */
+.schermbeeld { margin: 1.5rem 0 2rem; max-width: 48rem; }
+.schermbeeld img {
+  width: 100%; height: auto; display: block;
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px var(--lijn), 0 18px 40px -20px rgba(42, 33, 82, 0.45);
+}
+.schermbeeld figcaption { font-size: 0.92rem; color: var(--hema-zacht); margin-top: 0.6rem; }
+
+.standen-lijst { list-style: none; padding: 0; margin: 0 0 1.2rem; }
+.standen-lijst li { padding: 0.35rem 0; border-bottom: 1px solid var(--lijn); }
+.standen-lijst strong { font-family: var(--kop); display: inline-block; min-width: 11rem; }
+
+.linkrij { display: flex; flex-wrap: wrap; gap: 0.3rem 1.2rem; margin: 0; }
+
+/* Ronde filmbeelden, als preparaten onder de microscoop */
+.filmstrip {
+  list-style: none; padding: 0; margin: 1.6rem 0 0.6rem;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem;
+  max-width: 40rem;
+}
+@media (min-width: 40rem) { .filmstrip { grid-template-columns: repeat(6, 1fr); max-width: 52rem; } }
+.filmstrip-klein { max-width: 30rem; grid-template-columns: repeat(4, 1fr); }
+@media (min-width: 40rem) { .filmstrip-klein { grid-template-columns: repeat(4, 1fr); max-width: 30rem; } }
+.filmstrip img {
+  width: 100%; height: auto; display: block;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--hema);
+}

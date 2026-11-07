@@ -15,7 +15,9 @@
       })
       .then(function (html) {
         // Links in een blok zijn geschreven vanaf de hoofdmap.
-        plek.innerHTML = html.split('href="./').join('href="' + basis);
+        plek.innerHTML = html
+          .split('href="./').join('href="' + basis)
+          .split('src="./').join('src="' + basis);
       })
       .catch(function () {
         plek.innerHTML = '<p>Dit onderdeel kon niet worden geladen. <a href="' + basis + '">Bekijk de hoofdpagina</a>.</p>';

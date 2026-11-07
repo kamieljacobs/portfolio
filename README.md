@@ -5,7 +5,8 @@ Statische site voor GitHub Pages.
 ## Opbouw
 
 - `index.html` – algemene portfolio (geen uitgevers of werkgevers genoemd)
-- `blokken/` – bouwstenen, elk één keer geschreven: `videos`, `lesmateriaal`, `ai-werkwijze`, `over-mij`
+- `blokken/` – bouwstenen, elk één keer geschreven: `case-oefenexamens`, `videos`, `lesmateriaal`, `ai-werkwijze`, `over-mij`
+- `img/` – schermbeeld en filmafbeeldingen (overgenomen van de biologiesite)
 - `p/<code>/` – landingspagina per werkgever, met eigen intro en een keuze uit de blokken
 - `assets/` – stijl en het script dat de blokken laadt
 
