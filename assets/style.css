@@ -205,3 +205,7 @@ footer {
   border-radius: 50%;
   box-shadow: 0 0 0 3px var(--nacht);
 }
+
+.klein { font-size: 0.92rem; color: var(--hema-zacht); margin: 0.4rem 0 0; }
+.filmstrip a { display: block; border-radius: 50%; }
+.filmstrip a:hover img { box-shadow: 0 0 0 3px var(--goud); }
