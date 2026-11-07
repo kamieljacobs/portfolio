@@ -1,17 +1,20 @@
 /* Portfolio Kamiel Jacobs
-   Palet naar de HE-kleuring uit de microscopie:
-   hematoxyline (diep paarsblauw) als inkt, eosine (roze) als accent. */
+   Huisstijl afgeleid van Biologie bij Kamiel: nachtblauw, goud, Fraunces en Source Sans 3. */
 
 :root {
-  --glas: #f6f5f9;        /* achtergrond: licht, koel, als een objectglaasje */
-  --hema: #2a2152;        /* tekst en koppen */
-  --hema-zacht: #5b5480;  /* secundaire tekst */
-  --eosine: #c93d68;      /* accent, links */
-  --eosine-licht: #f3dbe4;
-  --lijn: #ddd9e8;
+  /* Zelfde familie als de biologiesite (lichte stand), iets zakelijker */
+  --glas: #F5F6F8;        /* achtergrond */
+  --hema: #121C2E;        /* tekst en koppen */
+  --hema-zacht: #4E5A6C;  /* secundaire tekst */
+  --nacht: #0F1726;       /* donkere banden, zoals de biologiesite */
+  --eosine: #8A650C;      /* links: goud, leesbaar op licht */
+  --goud: #D9AC3C;
+  --goud-licht: #E8C266;
+  --eosine-licht: rgba(217, 172, 60, 0.16);
+  --lijn: rgba(20, 32, 52, 0.10);
 
-  --kop: "Bricolage Grotesque", system-ui, sans-serif;
-  --tekst: "Literata", Georgia, serif;
+  --kop: "Fraunces", Georgia, serif;
+  --tekst: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --maat: 40rem;
 }
@@ -25,13 +28,13 @@ body {
   background: var(--glas);
   color: var(--hema);
   font-family: var(--tekst);
-  font-size: 1.0625rem;
-  line-height: 1.7;
+  font-size: 1.125rem;
+  line-height: 1.6;
 }
 
 a { color: var(--eosine); text-underline-offset: 0.18em; }
 a:hover { color: var(--hema); }
-:focus-visible { outline: 3px solid var(--eosine); outline-offset: 3px; border-radius: 2px; }
+:focus-visible { outline: 3px solid var(--goud); outline-offset: 3px; border-radius: 2px; }
 
 h1, h2, h3 {
   font-family: var(--kop);
@@ -40,7 +43,7 @@ h1, h2, h3 {
   letter-spacing: -0.01em;
   margin: 0 0 0.6em;
 }
-h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 800; letter-spacing: -0.025em; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 700; letter-spacing: -0.02em; }
 h2 { font-size: clamp(1.6rem, 3.4vw, 2.1rem); }
 h3 { font-size: 1.2rem; margin-top: 1.8em; }
 
@@ -90,20 +93,15 @@ p { margin: 0 0 1em; }
 }
 
 .beeldveld {
-  width: min(70%, 22rem);
+  width: min(60%, 17rem);
   aspect-ratio: 1;
   margin: 0 auto;
   border-radius: 50%;
-  background: #fbf6f9;
-  box-shadow: 0 0 0 10px var(--hema), 0 0 0 11px var(--lijn);
+  background: var(--nacht);
+  box-shadow: 0 0 0 10px var(--nacht), 0 0 0 12px var(--goud);
   overflow: hidden;
 }
-.beeldveld svg { width: 100%; height: 100%; display: block; }
-@media (prefers-reduced-motion: no-preference) {
-  .beeldveld .cel { animation: drijf 14s ease-in-out infinite alternate; transform-origin: center; }
-  .beeldveld .cel:nth-child(2n) { animation-duration: 18s; animation-direction: alternate-reverse; }
-  @keyframes drijf { to { transform: translate(6px, -5px) rotate(4deg); } }
-}
+.beeldveld img { width: 100%; height: 100%; display: block; object-fit: cover; }
 
 /* Secties */
 section.blok {
@@ -120,7 +118,7 @@ section.blok {
   border-left: 3px solid var(--eosine-licht);
   margin-bottom: 0.8rem;
 }
-.items li:hover { border-left-color: var(--eosine); }
+.items li:hover { border-left-color: var(--goud); }
 .items strong { font-family: var(--kop); font-size: 1.08rem; display: block; }
 .items a { font-family: var(--kop); font-weight: 600; font-size: 0.95rem; }
 .items p { margin: 0.2rem 0 0.4rem; }
@@ -137,7 +135,7 @@ section.blok {
   position: absolute; left: 0; top: 0.05rem;
   width: 2.1rem; height: 2.1rem;
   border-radius: 50%;
-  background: var(--hema); color: var(--glas);
+  background: var(--nacht); color: var(--goud-licht);
   font-family: var(--kop); font-weight: 700;
   display: grid; place-items: center;
 }
@@ -160,14 +158,14 @@ section.blok {
 
 /* Persoonlijke intro op een landingspagina */
 .persoonlijk {
-  background: var(--hema);
-  color: var(--glas);
+  background: var(--nacht);
+  color: #F2F2EE;
   padding: 3rem 0;
 }
 .persoonlijk h1 { color: #fff; }
 .persoonlijk p { max-width: var(--maat); font-size: 1.12rem; }
-.persoonlijk a { color: #ffb3c9; }
-.persoonlijk .voor-wie { color: #ffb3c9; }
+.persoonlijk a { color: var(--goud-licht); }
+.persoonlijk .voor-wie { color: var(--goud-licht); }
 
 .contact { padding: 3.5rem 0 4rem; border-top: 1px solid var(--lijn); }
 
@@ -183,7 +181,7 @@ footer {
 .schermbeeld img {
   width: 100%; height: auto; display: block;
   border-radius: 10px;
-  box-shadow: 0 0 0 1px var(--lijn), 0 18px 40px -20px rgba(42, 33, 82, 0.45);
+  box-shadow: 0 0 0 1px var(--lijn), 0 18px 40px -20px rgba(15, 23, 38, 0.5);
 }
 .schermbeeld figcaption { font-size: 0.92rem; color: var(--hema-zacht); margin-top: 0.6rem; }
 
@@ -205,5 +203,5 @@ footer {
 .filmstrip img {
   width: 100%; height: auto; display: block;
   border-radius: 50%;
-  box-shadow: 0 0 0 3px var(--hema);
+  box-shadow: 0 0 0 3px var(--nacht);
 }
