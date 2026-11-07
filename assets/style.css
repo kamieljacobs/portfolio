@@ -1,0 +1,179 @@
+/* Portfolio Kamiel Jacobs
+   Palet naar de HE-kleuring uit de microscopie:
+   hematoxyline (diep paarsblauw) als inkt, eosine (roze) als accent. */
+
+:root {
+  --glas: #f6f5f9;        /* achtergrond: licht, koel, als een objectglaasje */
+  --hema: #2a2152;        /* tekst en koppen */
+  --hema-zacht: #5b5480;  /* secundaire tekst */
+  --eosine: #c93d68;      /* accent, links */
+  --eosine-licht: #f3dbe4;
+  --lijn: #ddd9e8;
+
+  --kop: "Bricolage Grotesque", system-ui, sans-serif;
+  --tekst: "Literata", Georgia, serif;
+
+  --maat: 40rem;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--glas);
+  color: var(--hema);
+  font-family: var(--tekst);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+a { color: var(--eosine); text-underline-offset: 0.18em; }
+a:hover { color: var(--hema); }
+:focus-visible { outline: 3px solid var(--eosine); outline-offset: 3px; border-radius: 2px; }
+
+h1, h2, h3 {
+  font-family: var(--kop);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.6em;
+}
+h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 800; letter-spacing: -0.025em; }
+h2 { font-size: clamp(1.6rem, 3.4vw, 2.1rem); }
+h3 { font-size: 1.2rem; margin-top: 1.8em; }
+
+p { margin: 0 0 1em; }
+
+.wrap {
+  width: 100%;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+@media (min-width: 40rem) { .wrap { padding: 0 2rem; } }
+
+/* Kop van de pagina */
+.balk {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1.4rem 0;
+  font-family: var(--kop);
+  font-size: 0.95rem;
+}
+.balk a { color: var(--hema); text-decoration: none; font-weight: 700; }
+.balk nav a { font-weight: 500; margin-left: 1.2rem; color: var(--hema-zacht); }
+.balk nav a:hover { color: var(--eosine); }
+
+/* Hero: tekst links, beeldveld van een microscoop rechts */
+.held {
+  display: grid;
+  gap: 2rem;
+  padding: 2.5rem 0 3.5rem;
+  align-items: center;
+}
+@media (min-width: 52rem) {
+  .held { grid-template-columns: 1.25fr 1fr; gap: 3rem; padding: 4rem 0 5rem; }
+}
+.held p.lead {
+  font-size: 1.2rem;
+  max-width: 34rem;
+  color: var(--hema-zacht);
+}
+.voor-wie {
+  font-family: var(--kop);
+  color: var(--eosine);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.beeldveld {
+  width: min(70%, 22rem);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #fbf6f9;
+  box-shadow: 0 0 0 10px var(--hema), 0 0 0 11px var(--lijn);
+  overflow: hidden;
+}
+.beeldveld svg { width: 100%; height: 100%; display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .beeldveld .cel { animation: drijf 14s ease-in-out infinite alternate; transform-origin: center; }
+  .beeldveld .cel:nth-child(2n) { animation-duration: 18s; animation-direction: alternate-reverse; }
+  @keyframes drijf { to { transform: translate(6px, -5px) rotate(4deg); } }
+}
+
+/* Secties */
+section.blok {
+  padding: 3.5rem 0;
+  border-top: 1px solid var(--lijn);
+}
+.blok .inhoud { max-width: var(--maat); }
+.blok .intro { font-size: 1.1rem; color: var(--hema-zacht); }
+
+/* Lijst met materiaal: titel + uitleg, geen kaartjes */
+.items { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.items li {
+  padding: 1rem 0 1rem 1.2rem;
+  border-left: 3px solid var(--eosine-licht);
+  margin-bottom: 0.8rem;
+}
+.items li:hover { border-left-color: var(--eosine); }
+.items strong { font-family: var(--kop); font-size: 1.08rem; display: block; }
+.items a { font-family: var(--kop); font-weight: 600; font-size: 0.95rem; }
+.items p { margin: 0.2rem 0 0.4rem; }
+
+/* Werkwijze is echt een volgorde, dus genummerd */
+.stappen { counter-reset: stap; list-style: none; padding: 0; margin: 1.5rem 0; }
+.stappen li {
+  counter-increment: stap;
+  position: relative;
+  padding: 0 0 1.4rem 3.2rem;
+}
+.stappen li::before {
+  content: counter(stap);
+  position: absolute; left: 0; top: 0.05rem;
+  width: 2.1rem; height: 2.1rem;
+  border-radius: 50%;
+  background: var(--hema); color: var(--glas);
+  font-family: var(--kop); font-weight: 700;
+  display: grid; place-items: center;
+}
+.stappen strong { font-family: var(--kop); display: block; font-size: 1.08rem; }
+
+.vakgebieden { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; padding: 0; margin: 0.8rem 0 1rem; }
+.vakgebieden li {
+  font-family: var(--kop); font-size: 0.9rem;
+  background: var(--eosine-licht);
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+}
+
+/* Nog in te vullen tekst: valt bewust op, zodat niets vergeten wordt */
+.aanvullen {
+  background: #fff3b0;
+  outline: 1px dashed #b38f00;
+  padding: 0 0.25rem;
+}
+
+/* Persoonlijke intro op een landingspagina */
+.persoonlijk {
+  background: var(--hema);
+  color: var(--glas);
+  padding: 3rem 0;
+}
+.persoonlijk h1 { color: #fff; }
+.persoonlijk p { max-width: var(--maat); font-size: 1.12rem; }
+.persoonlijk a { color: #ffb3c9; }
+.persoonlijk .voor-wie { color: #ffb3c9; }
+
+.contact { padding: 3.5rem 0 4rem; border-top: 1px solid var(--lijn); }
+
+footer {
+  padding: 2rem 0 3rem;
+  font-size: 0.9rem;
+  color: var(--hema-zacht);
+  border-top: 1px solid var(--lijn);
+}
